@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99AFCFE3-4595-4B7E-8421-242ED0735DF1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Pexeso_Ekonomika</RootNamespace>
+    <AssemblyName>Pexeso Ekonomika</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\hp\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <TargetCulture>en</TargetCulture>
+    <PublisherName>Radovan Dulák, Samuel Lang</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>false</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\Desktop\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>PexesoIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Pexeso_Ekonomika.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A31F471483DD7938A68840ED9D92A0671FBFB205</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Pexeso Ekonomika_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game7.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game7.Designer.cs">
+      <DependentUpon>Game7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game6.Designer.cs">
+      <DependentUpon>Game6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game5.Designer.cs">
+      <DependentUpon>Game5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game4.Designer.cs">
+      <DependentUpon>Game4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game3.Designer.cs">
+      <DependentUpon>Game3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game2.Designer.cs">
+      <DependentUpon>Game2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Game1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game1.Designer.cs">
+      <DependentUpon>Game1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game7.resx">
+      <DependentUpon>Game7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game6.resx">
+      <DependentUpon>Game6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game5.resx">
+      <DependentUpon>Game5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game4.resx">
+      <DependentUpon>Game4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game3.resx">
+      <DependentUpon>Game3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game2.resx">
+      <DependentUpon>Game2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game1.resx">
+      <DependentUpon>Game1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Pexeso Ekonomika_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MainBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropdownMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropupMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1BackgroundPanel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1Card14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1CardBack.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DupCard14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CardHider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2Card15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2CardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DupCard15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CardHider1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard112.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Background1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card81.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card91.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3Card121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard61.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard71.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard81.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard91.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard101.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard111.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3DupCard1121.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4Card13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4CardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\4DupCard13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Backround.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5CardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6CardBack.jpg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7Card13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7CardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\7DupCard13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PexesoIcon.ico" />
+    <None Include="Resources\3CardBack.png" />
+    <None Include="Resources\CardHider71.png" />
+    <None Include="Resources\CardHider7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

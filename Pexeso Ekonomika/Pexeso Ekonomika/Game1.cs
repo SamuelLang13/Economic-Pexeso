@@ -1,0 +1,869 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Pexeso_Ekonomika
+{
+    public partial class Game1 : Form
+    {
+        new Random Location = new Random();
+        List<Point> points = new List<Point>();
+        PictureBox PendingImage1;
+        PictureBox PendingImage2;
+        int WinCounter;
+        int x;
+
+        private MainMenu MainMenu;
+
+        public Game1()
+        {
+            InitializeComponent();
+        }
+
+        private void Game1_Load(object sender, EventArgs e)
+        {
+            MainMenu = new MainMenu();
+            foreach (PictureBox picture in CardHolder.Controls)
+            {
+                picture.Enabled = false;
+                points.Add(picture.Location);
+            }
+            foreach (PictureBox picture in CardHolder.Controls)
+            {
+                int next = Location.Next(points.Count);
+                Point p = points[next];
+                picture.Location = p;
+                points.Remove(p);
+            }
+            foreach (PictureBox picture in CardHolder.Controls)
+            {
+                picture.Enabled = true;
+                picture.Cursor = Cursors.Hand;
+                picture.Image = Properties.Resources._1CardBack_jpg;
+            }
+            foreach (PictureBox picture in PanelCardShow.Controls)
+            {
+                picture.Image = null;
+            }
+            x = 1;
+            WinCounter = 1;
+        }
+
+        private void nováHraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Game1_Load(sender, e);
+        }
+
+        private void hraťZnovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            MainMenu.Show();
+        }
+
+        private void Retry_Click(object sender, EventArgs e)
+        {
+            Game1_Load(sender, e);
+        }
+
+        private void CloseGame_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void CardsStay_Tick(object sender, EventArgs e)
+        {
+            CardsStay.Stop();
+            PendingImage1.Image = Properties.Resources._1CardBack_jpg;
+            PendingImage2.Image = Properties.Resources._1CardBack_jpg;
+            PendingImage1.Enabled = true;
+            PendingImage2.Enabled = true;
+            PendingImage1 = null;
+            PendingImage2 = null;
+            CardHolder.Enabled = true;
+        }
+
+        private void CardsHide_Tick(object sender, EventArgs e)
+        {
+            CardsHide.Stop();
+            if (x == 1)
+            {
+                CardShow1.Image = PendingImage1.Image;
+                DupShow1.Image = PendingImage2.Image;
+            }
+            if (x == 2)
+            {
+                CardShow2.Image = PendingImage1.Image;
+                DupShow2.Image = PendingImage2.Image;
+            }
+            if (x == 3)
+            {
+                CardShow3.Image = PendingImage1.Image;
+                DupShow3.Image = PendingImage2.Image;
+            }
+            if (x == 4)
+            {
+                CardShow4.Image = PendingImage1.Image;
+                DupShow4.Image = PendingImage2.Image;
+            }
+            if (x == 5)
+            {
+                CardShow5.Image = PendingImage1.Image;
+                DupShow5.Image = PendingImage2.Image;
+            }
+            if (x == 6)
+            {
+                CardShow6.Image = PendingImage1.Image;
+                DupShow6.Image = PendingImage2.Image;
+            }
+            if (x == 7)
+            {
+                CardShow7.Image = PendingImage1.Image;
+                DupShow7.Image = PendingImage2.Image;
+            }
+            if (x == 8)
+            {
+                CardShow8.Image = PendingImage1.Image;
+                DupShow8.Image = PendingImage2.Image;
+            }
+            if (x == 9)
+            {
+                CardShow9.Image = PendingImage1.Image;
+                DupShow9.Image = PendingImage2.Image;
+            }
+            if (x == 10)
+            {
+                CardShow10.Image = PendingImage1.Image;
+                DupShow10.Image = PendingImage2.Image;
+            }
+            if (x == 11)
+            {
+                CardShow11.Image = PendingImage1.Image;
+                DupShow11.Image = PendingImage2.Image;
+            }
+            if (x == 12)
+            {
+                CardShow12.Image = PendingImage1.Image;
+                DupShow12.Image = PendingImage2.Image;
+            }
+            if (x == 13)
+            {
+                CardShow13.Image = PendingImage1.Image;
+                DupShow13.Image = PendingImage2.Image;
+            }
+            if (x == 14)
+            {
+                CardShow14.Image = PendingImage1.Image;
+                DupShow14.Image = PendingImage2.Image;
+            }
+            x++;
+            PendingImage1.Image = Properties.Resources.CardHider1;
+            PendingImage2.Image = Properties.Resources.CardHider1;
+            PendingImage1 = null;
+            PendingImage2 = null;
+            CardHolder.Enabled = true;
+            WinCounter++;
+        }
+
+        private void WinTimer_Tick(object sender, EventArgs e)
+        {
+            WinTimer.Stop();
+            if (WinCounter == 14)
+            {
+                MessageBox.Show("               Úspešne si to zvládol.        ");
+            }
+        }
+
+        private void Card1_Click(object sender, EventArgs e)
+        {
+            Card1.Image = Properties.Resources._1Card1;
+            if (Card1.Image != Properties.Resources._1CardBack_jpg) Card1.Enabled = false;
+            else Card1.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card1;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card1;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card1.Enabled = false;
+                    DupCard1.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard1_Click(object sender, EventArgs e)
+        {
+            DupCard1.Image = Properties.Resources._1DupCard1;
+            if (DupCard1.Image != Properties.Resources._1CardBack_jpg) DupCard1.Enabled = false;
+            else DupCard1.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard1;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard1;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card1.Enabled = false;
+                    DupCard1.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card2_Click(object sender, EventArgs e)
+        {
+            Card2.Image = Properties.Resources._1Card2;
+            if (Card2.Image != Properties.Resources._1CardBack_jpg) Card2.Enabled = false;
+            else Card2.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card2;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card2;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card2.Enabled = false;
+                    DupCard2.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard2_Click(object sender, EventArgs e)
+        {
+            DupCard2.Image = Properties.Resources._1DupCard2;
+            if (DupCard2.Image != Properties.Resources._1CardBack_jpg) DupCard2.Enabled = false;
+            else DupCard2.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard2;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard2;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card2.Enabled = false;
+                    DupCard2.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card3_Click(object sender, EventArgs e)
+        {
+            Card3.Image = Properties.Resources._1Card3;
+            if (Card1.Image != Properties.Resources._1CardBack_jpg) Card3.Enabled = false;
+            else Card3.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card3;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card3;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card3.Enabled = false;
+                    DupCard3.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard3_Click(object sender, EventArgs e)
+        {
+            DupCard3.Image = Properties.Resources._1DupCard3;
+            if (DupCard3.Image != Properties.Resources._1CardBack_jpg) DupCard3.Enabled = false;
+            else DupCard3.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard3;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard3;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card3.Enabled = false;
+                    DupCard3.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card4_Click(object sender, EventArgs e)
+        {
+            Card4.Image = Properties.Resources._1Card4;
+            if (Card4.Image != Properties.Resources._1CardBack_jpg) Card4.Enabled = false;
+            else Card4.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card4;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card4;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card4.Enabled = false;
+                    DupCard4.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard4_Click(object sender, EventArgs e)
+        {
+            DupCard4.Image = Properties.Resources._1DupCard4;
+            if (DupCard4.Image != Properties.Resources._1CardBack_jpg) DupCard4.Enabled = false;
+            else DupCard4.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard4;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard4;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card4.Enabled = false;
+                    DupCard4.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card5_Click(object sender, EventArgs e)
+        {
+            Card5.Image = Properties.Resources._1Card5;
+            if (Card5.Image != Properties.Resources._1CardBack_jpg) Card5.Enabled = false;
+            else Card5.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card5;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card5;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card5.Enabled = false;
+                    DupCard5.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard5_Click(object sender, EventArgs e)
+        {
+            DupCard5.Image = Properties.Resources._1DupCard5;
+            if (DupCard5.Image != Properties.Resources._1CardBack_jpg) DupCard5.Enabled = false;
+            else DupCard5.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard5;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard5;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card5.Enabled = false;
+                    DupCard5.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card6_Click(object sender, EventArgs e)
+        {
+            Card6.Image = Properties.Resources._1Card6;
+            if (Card6.Image != Properties.Resources._1CardBack_jpg) Card6.Enabled = false;
+            else Card6.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card6;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card6;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card6.Enabled = false;
+                    DupCard6.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard6_Click(object sender, EventArgs e)
+        {
+            DupCard6.Image = Properties.Resources._1DupCard6;
+            if (DupCard6.Image != Properties.Resources._1CardBack_jpg) DupCard6.Enabled = false;
+            else DupCard6.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard6;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard6;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card6.Enabled = false;
+                    DupCard6.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card7_Click(object sender, EventArgs e)
+        {
+            Card7.Image = Properties.Resources._1Card7;
+            if (Card7.Image != Properties.Resources._1CardBack_jpg) Card7.Enabled = false;
+            else Card7.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card7;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card7;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card7.Enabled = false;
+                    DupCard7.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard7_Click(object sender, EventArgs e)
+        {
+            DupCard7.Image = Properties.Resources._1DupCard7;
+            if (DupCard7.Image != Properties.Resources._1CardBack_jpg) DupCard7.Enabled = false;
+            else DupCard7.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard7;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard7;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card7.Enabled = false;
+                    DupCard7.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card8_Click(object sender, EventArgs e)
+        {
+            Card8.Image = Properties.Resources._1Card8;
+            if (Card8.Image != Properties.Resources._1CardBack_jpg) Card8.Enabled = false;
+            else Card8.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card8;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card8;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card8.Enabled = false;
+                    DupCard8.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard8_Click(object sender, EventArgs e)
+        {
+            DupCard8.Image = Properties.Resources._1DupCard8;
+            if (DupCard8.Image != Properties.Resources._1CardBack_jpg) DupCard8.Enabled = false;
+            else DupCard8.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard8;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard8;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card8.Enabled = false;
+                    DupCard8.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card9_Click(object sender, EventArgs e)
+        {
+            Card9.Image = Properties.Resources._1Card9;
+            if (Card9.Image != Properties.Resources._1CardBack_jpg) Card9.Enabled = false;
+            else Card9.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card9;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card9;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card9.Enabled = false;
+                    DupCard9.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard9_Click(object sender, EventArgs e)
+        {
+            DupCard9.Image = Properties.Resources._1DupCard9;
+            if (DupCard9.Image != Properties.Resources._1CardBack_jpg) DupCard9.Enabled = false;
+            else DupCard9.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard9;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard9;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card9.Enabled = false;
+                    DupCard9.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card10_Click(object sender, EventArgs e)
+        {
+            Card10.Image = Properties.Resources._1Card10;
+            if (Card10.Image != Properties.Resources._1CardBack_jpg) Card10.Enabled = false;
+            else Card10.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card10;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card10;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card10.Enabled = false;
+                    DupCard10.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard10_Click(object sender, EventArgs e)
+        {
+            DupCard10.Image = Properties.Resources._1DupCard10;
+            if (DupCard10.Image != Properties.Resources._1CardBack_jpg) DupCard10.Enabled = false;
+            else DupCard10.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard10;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard10;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card10.Enabled = false;
+                    DupCard10.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card11_Click(object sender, EventArgs e)
+        {
+            Card11.Image = Properties.Resources._1Card11;
+            if (Card11.Image != Properties.Resources._1CardBack_jpg) Card11.Enabled = false;
+            else Card11.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card11;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card11;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card11.Enabled = false;
+                    DupCard11.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard11_Click(object sender, EventArgs e)
+        {
+            DupCard11.Image = Properties.Resources._1DupCard11;
+            if (DupCard11.Image != Properties.Resources._1CardBack_jpg) DupCard11.Enabled = false;
+            else DupCard11.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard11;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard11;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card11.Enabled = false;
+                    DupCard11.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card12_Click(object sender, EventArgs e)
+        {
+            Card12.Image = Properties.Resources._1Card12;
+            if (Card12.Image != Properties.Resources._1CardBack_jpg) Card12.Enabled = false;
+            else Card12.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card12;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card12;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card12.Enabled = false;
+                    DupCard12.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard12_Click(object sender, EventArgs e)
+        {
+            DupCard12.Image = Properties.Resources._1DupCard12;
+            if (DupCard12.Image != Properties.Resources._1CardBack_jpg) DupCard12.Enabled = false;
+            else DupCard12.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard12;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard12;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card12.Enabled = false;
+                    DupCard12.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card13_Click(object sender, EventArgs e)
+        {
+            Card13.Image = Properties.Resources._1Card13;
+            if (Card13.Image != Properties.Resources._1CardBack_jpg) Card13.Enabled = false;
+            else Card13.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card13;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card13;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card13.Enabled = false;
+                    DupCard13.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard13_Click(object sender, EventArgs e)
+        {
+            DupCard13.Image = Properties.Resources._1DupCard13;
+            if (DupCard13.Image != Properties.Resources._1CardBack_jpg) DupCard13.Enabled = false;
+            else DupCard13.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard13;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard13;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card13.Enabled = false;
+                    DupCard13.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void Card14_Click(object sender, EventArgs e)
+        {
+            Card14.Image = Properties.Resources._1Card14;
+            if (Card14.Image != Properties.Resources._1CardBack_jpg) Card14.Enabled = false;
+            else Card14.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = Card14;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = Card14;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card14.Enabled = false;
+                    DupCard14.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void DupCard14_Click(object sender, EventArgs e)
+        {
+            DupCard14.Image = Properties.Resources._1DupCard14;
+            if (DupCard14.Image != Properties.Resources._1CardBack_jpg) DupCard14.Enabled = false;
+            else DupCard14.Enabled = true;
+            if (PendingImage1 == null) PendingImage1 = DupCard14;
+            else if (PendingImage1 != null && PendingImage2 == null) PendingImage2 = DupCard14;
+            if (PendingImage1 != null && PendingImage2 != null)
+            {
+                CardHolder.Enabled = false;
+                if (PendingImage1.Tag == PendingImage2.Tag)
+                {
+                    CardsHide.Start();
+                    Card14.Enabled = false;
+                    DupCard14.Enabled = false;
+                    WinTimer.Start();
+                }
+                else
+                {
+                    CardsStay.Start();
+                }
+            }
+        }
+
+        private void autoriToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("                        Tvorcovia hry:\n\n\n        * Radovan Dulák, Samuel Lang *", "Authors");
+        }
+
+        private void kontaktToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("             Kontakt na autorov:\n\n\n               dulak@spse-po.sk\n                lang@spse-po.sk     ", "Kontakt");
+        }
+    }
+}
